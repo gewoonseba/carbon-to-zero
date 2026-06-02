@@ -1,9 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
-import { type DateRange } from "react-day-picker";
+import { useMemo, useState } from "react";
 import { timeFormat } from "d3";
-import { Filter, RotateCcw } from "lucide-react";
+import { CalendarDays, Filter, RotateCcw } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -17,6 +16,11 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
 import { categoryColors } from "@/lib/palettes";
@@ -43,6 +47,64 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   </Label>
 );
 
+/**
+ * A single labelled date input whose trigger opens its own calendar popover.
+ * `min`/`max` bound both selection (disabled days) and dropdown navigation.
+ */
+function DateField({
+  label,
+  value,
+  min,
+  max,
+  onPick,
+}: {
+  label: string;
+  value: string;
+  min: Date;
+  max: Date;
+  onPick: (iso: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const date = fromISO(value);
+
+  return (
+    <div className="flex flex-1 flex-col gap-1.5">
+      <Label className="px-0.5 text-xs font-medium text-muted-foreground">
+        {label}
+      </Label>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full justify-start gap-2 rounded-lg border-white/10 bg-white/[0.02] font-normal tabular"
+          >
+            <CalendarDays data-icon="inline-start" />
+            {fmtDay(date)}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent align="start" className="w-auto overflow-hidden p-0">
+          <Calendar
+            mode="single"
+            selected={date}
+            defaultMonth={date}
+            startMonth={min}
+            endMonth={max}
+            captionLayout="dropdown"
+            disabled={{ before: min, after: max }}
+            onSelect={(d) => {
+              if (!d) return;
+              onPick(toISO(d));
+              setOpen(false);
+            }}
+            className="bg-transparent"
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
+}
+
 export function FilterPanel({
   open,
   onOpenChange,
@@ -64,7 +126,6 @@ export function FilterPanel({
 
   const minDate = fromISO(bounds.min);
   const maxDate = fromISO(bounds.max);
-  const selected: DateRange = { from: fromISO(state.from), to: fromISO(state.to) };
   const activePreset = matchPreset(state, bounds);
 
   const selectedIds = useMemo(
@@ -100,10 +161,13 @@ export function FilterPanel({
         86_400_000,
     ) + 1;
 
-  function handleCalendar(range: DateRange | undefined) {
-    if (!range?.from) return;
-    const from = toISO(range.from);
-    setRange(from, range.to ? toISO(range.to) : from);
+  function handleStart(from: string) {
+    // Keep the window valid: never let the start overtake the end.
+    setRange(from, from > state.to ? from : state.to);
+  }
+
+  function handleEnd(to: string) {
+    setRange(state.from, to);
   }
 
   function applyPreset(id: string) {
@@ -160,12 +224,7 @@ export function FilterPanel({
           <div className="flex flex-col gap-6 px-5 py-6">
             {/* date range */}
             <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between gap-3">
-                <Eyebrow>Date range</Eyebrow>
-                <span className="tabular text-xs text-muted-foreground">
-                  {fmtDay(selected.from!)} – {fmtDay(selected.to!)}
-                </span>
-              </div>
+              <Eyebrow>Date range</Eyebrow>
 
               <ToggleGroup
                 type="single"
@@ -186,17 +245,20 @@ export function FilterPanel({
                 ))}
               </ToggleGroup>
 
-              <div className="flex justify-center rounded-xl border border-white/10 bg-white/[0.02] p-2">
-                <Calendar
-                  mode="range"
-                  selected={selected}
-                  onSelect={handleCalendar}
-                  defaultMonth={selected.from}
-                  startMonth={minDate}
-                  endMonth={maxDate}
-                  captionLayout="dropdown"
-                  disabled={{ before: minDate, after: maxDate }}
-                  className="bg-transparent p-0"
+              <div className="flex items-start gap-3">
+                <DateField
+                  label="Start"
+                  value={state.from}
+                  min={minDate}
+                  max={maxDate}
+                  onPick={handleStart}
+                />
+                <DateField
+                  label="End"
+                  value={state.to}
+                  min={fromISO(state.from)}
+                  max={maxDate}
+                  onPick={handleEnd}
                 />
               </div>
             </div>
