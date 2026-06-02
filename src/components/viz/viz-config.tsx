@@ -14,7 +14,7 @@ import {
   type Palette,
 } from "@/lib/palettes";
 
-export type RankMetric = "total" | "perCapita";
+export type RankMetric = "total" | "percent";
 
 export interface VizConfig {
   paletteId: string;
@@ -23,7 +23,6 @@ export interface VizConfig {
   showAnnotations: boolean;
   animate: boolean;
   rankMetric: RankMetric;
-  topN: number;
 }
 
 const DEFAULT_CONFIG: VizConfig = {
@@ -32,8 +31,7 @@ const DEFAULT_CONFIG: VizConfig = {
   showValues: true,
   showAnnotations: true,
   animate: true,
-  rankMetric: "perCapita",
-  topN: 12,
+  rankMetric: "total",
 };
 
 interface VizConfigContextValue {

@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -139,27 +138,6 @@ export function ControlPanel({
                   );
                 })}
               </div>
-            </div>
-
-            <Separator className="bg-white/10" />
-
-            {/* top N */}
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between">
-                <Label className="text-sm font-medium text-foreground">
-                  Countries in ranking
-                </Label>
-                <span className="tabular text-sm font-semibold text-accent-brand">
-                  {config.topN}
-                </span>
-              </div>
-              <Slider
-                value={[config.topN]}
-                min={6}
-                max={24}
-                step={1}
-                onValueChange={([v]) => update({ topN: v })}
-              />
             </div>
 
             <Separator className="bg-white/10" />

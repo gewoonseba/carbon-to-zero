@@ -1,7 +1,7 @@
-import { getEmissionsData } from "@/lib/data";
+import { getSavingsData } from "@/lib/data";
 import { CarbonStory } from "@/components/carbon-story";
 
 export default function Home() {
-  const data = getEmissionsData();
+  const data = getSavingsData();
   return <CarbonStory data={data} />;
 }
