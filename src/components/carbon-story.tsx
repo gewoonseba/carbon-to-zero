@@ -4,9 +4,10 @@ import { useState, type CSSProperties } from "react";
 import type { SavingsData } from "@/lib/types";
 import { formatTonnes } from "@/lib/format";
 import { VizConfigProvider } from "@/components/viz/viz-config";
+import { FilterProvider, useFilter } from "@/components/viz/filter-config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { ControlPanel } from "@/components/control-panel";
+import { FilterPanel } from "@/components/filter-panel";
 import { Section } from "@/components/section";
 import { Hero } from "@/components/sections/hero";
 import { SavingsArea } from "@/components/viz/savings-area";
@@ -16,16 +17,30 @@ import { SavingsWaffle } from "@/components/viz/savings-waffle";
 import { CarsEquivalent } from "@/components/viz/cars-equivalent";
 
 export function CarbonStory({ data }: { data: SavingsData }) {
+  return (
+    <VizConfigProvider>
+      <FilterProvider data={data}>
+        <StoryBody />
+      </FilterProvider>
+    </VizConfigProvider>
+  );
+}
+
+function StoryBody() {
+  const { filtered: data, activeCount } = useFilter();
   const [panelOpen, setPanelOpen] = useState(false);
 
-  // Onboarding milestones for the savings curve — one marker per customer.
+  // Onboarding milestones for the savings curve — one marker per visible site.
   const annotations = [...data.customers]
     .sort((a, b) => a.steeringStart.localeCompare(b.steeringStart))
     .map((c) => ({ date: c.steeringStart, label: c.name.split(" ")[0] }));
 
   return (
-    <VizConfigProvider>
-      <SiteHeader onCustomize={() => setPanelOpen(true)} />
+    <>
+      <SiteHeader
+        onOpenFilters={() => setPanelOpen(true)}
+        filterCount={activeCount}
+      />
 
       <main id="top">
         <Hero data={data} />
@@ -126,7 +141,7 @@ export function CarbonStory({ data }: { data: SavingsData }) {
 
       <SiteFooter fleet={data.fleet} />
 
-      <ControlPanel open={panelOpen} onOpenChange={setPanelOpen} />
-    </VizConfigProvider>
+      <FilterPanel open={panelOpen} onOpenChange={setPanelOpen} />
+    </>
   );
 }
