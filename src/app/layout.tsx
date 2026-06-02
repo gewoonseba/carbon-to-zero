@@ -23,9 +23,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Carbon to Zero — The Shape of Global Emissions",
+  title: "Carbon to Zero — The CO₂ We Steer Out of the Grid",
   description:
-    "A data-driven portrait of where the world's CO₂ comes from, who emits it, and the long road to net zero. Built with D3.",
+    "How much carbon Companion Energy saves by steering customers' batteries — charging on clean power, discharging when the grid is dirtiest. Built with D3.",
   applicationName: "Carbon to Zero",
 };
 

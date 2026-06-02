@@ -1,20 +1,26 @@
 "use client";
 
 import { useState, type CSSProperties } from "react";
-import type { EmissionsData } from "@/lib/types";
+import type { SavingsData } from "@/lib/types";
+import { formatTonnes } from "@/lib/format";
 import { VizConfigProvider } from "@/components/viz/viz-config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ControlPanel } from "@/components/control-panel";
 import { Section } from "@/components/section";
 import { Hero } from "@/components/sections/hero";
-import { GlobalTrendArea } from "@/components/viz/global-trend-area";
-import { EmittersTreemap } from "@/components/viz/emitters-treemap";
+import { SavingsArea } from "@/components/viz/savings-area";
+import { SaversTreemap } from "@/components/viz/savers-treemap";
 import { RankingBars } from "@/components/viz/ranking-bars";
-import { SectorWaffle } from "@/components/viz/sector-waffle";
+import { SavingsWaffle } from "@/components/viz/savings-waffle";
 
-export function CarbonStory({ data }: { data: EmissionsData }) {
+export function CarbonStory({ data }: { data: SavingsData }) {
   const [panelOpen, setPanelOpen] = useState(false);
+
+  // Onboarding milestones for the savings curve — one marker per customer.
+  const annotations = [...data.customers]
+    .sort((a, b) => a.steeringStart.localeCompare(b.steeringStart))
+    .map((c) => ({ date: c.steeringStart, label: c.name.split(" ")[0] }));
 
   return (
     <VizConfigProvider>
@@ -24,47 +30,47 @@ export function CarbonStory({ data }: { data: EmissionsData }) {
         <Hero data={data} />
 
         <Section
-          id="trajectory"
+          id="savings"
           index="01"
-          eyebrow="The climb"
-          title="Seven decades of relentless growth."
-          lede="Fossil-fuel CO₂ has risen more than six-fold since 1950. The line dips only at moments of crisis — the Soviet collapse, the 2008 crash, the pandemic — before resuming its climb."
-          source="Source shape: Our World in Data / Global Carbon Project. Figures illustrative."
+          eyebrow="The savings curve"
+          title="Every day, the avoided carbon adds up."
+          lede="Each band is one customer. As we steer more batteries — charging on clean power, discharging when the grid is dirtiest — the carbon they never emit accumulates, day after day, toward the fleet total."
+          source="Cumulative CO₂ saved, stacked by customer. Avoided emissions = (battery discharge − charge) × grid carbon intensity. Dashed lines mark each customer's steering start."
         >
-          <GlobalTrendArea data={data.regionTrend} />
+          <SavingsArea data={data.trend} annotations={annotations} />
         </Section>
 
         <Section
-          id="emitters"
+          id="savers"
           index="02"
-          eyebrow="The big emitters"
-          title="A handful of nations dominate."
-          lede="Each rectangle is a country, sized by its annual emissions and coloured by region. China and the United States alone account for nearly half of the world's output."
-          source="2022 territorial fossil-CO₂ emissions. Area ∝ million tonnes."
+          eyebrow="The biggest savers"
+          title="A few sites do the heavy lifting."
+          lede="Each rectangle is a customer, sized by the tonnes of CO₂ we've helped them avoid and coloured by country. A single grid-scale battery in the Netherlands saves more than every other site combined."
+          source="Area ∝ tonnes CO₂ saved since steering began."
         >
-          <EmittersTreemap data={data.countries} />
+          <SaversTreemap data={data.customers} />
         </Section>
 
         <Section
-          id="per-person"
+          id="efficiency"
           index="03"
           eyebrow="A fairer measure"
-          title="Per person, the ranking flips."
-          lede="Switch the metric and the story changes. Measured per resident, it's the small, wealthy petro-states and high-consumption economies that top the table — not the largest national totals."
-          source="Toggle between total and per-capita emissions. Dashed line marks the global average."
+          title="Per unit of energy, the ranking flips."
+          lede="Switch from total tonnes to the share of emissions cut, and the story changes. The grid-scale battery still leads, but a small commercial solar site overtakes a much larger residential fleet — steering a dedicated asset hard beats spreading effort thin."
+          source="Toggle between total saved and percentage reduction. Dashed line marks the fleet-wide reduction."
         >
-          <RankingBars data={data.countries} />
+          <RankingBars data={data.customers} />
         </Section>
 
         <Section
-          id="sectors"
+          id="mix"
           index="04"
-          eyebrow="Anatomy of emissions"
-          title="Where the carbon actually comes from."
-          lede="Every square is one percent of global emissions, grouped by the activity that produces it. Electricity and heat lead — but transport, industry and land use together rival them."
-          source="Approximate global greenhouse-gas split by sector. Each square ≈ 1%."
+          eyebrow="Anatomy of the savings"
+          title="What kind of steering saves the carbon."
+          lede="Every square is one percent of all the CO₂ we've saved, grouped by the type of asset behind it. Grid-scale storage, residential virtual power plants and commercial solar each pull their weight differently."
+          source="Each square ≈ 1% of fleet CO₂ saved. Grouped by asset profile."
         >
-          <SectorWaffle data={data.sectors} />
+          <SavingsWaffle data={data.customers} />
         </Section>
 
         {/* closing */}
@@ -82,24 +88,25 @@ export function CarbonStory({ data }: { data: EmissionsData }) {
           <div className="bg-grid pointer-events-none absolute inset-0" />
           <div className="relative mx-auto w-full max-w-6xl px-6 py-28 sm:px-8 md:py-40">
             <div className="reveal is-visible mx-auto max-w-3xl text-center">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent-brand">
-              The road ahead
-            </p>
-            <h2 className="mt-6 font-display text-4xl font-medium leading-tight tracking-[-0.025em] text-balance text-foreground sm:text-5xl md:text-6xl">
-              From thirty-seven gigatonnes,{" "}
-              <span className="text-brand-gradient">to zero.</span>
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Reaching net zero means bending every curve on this page back to
-              the baseline within a single generation. The data shows the scale
-              of the climb — and exactly where the work begins.
-            </p>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent-brand">
+                The road ahead
+              </p>
+              <h2 className="mt-6 font-display text-4xl font-medium leading-tight tracking-[-0.025em] text-balance text-foreground sm:text-5xl md:text-6xl">
+                {formatTonnes(data.fleet.totalSavedTonnes)} saved so far.{" "}
+                <span className="text-brand-gradient">Just the start.</span>
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                Every battery we bring online bends a little more carbon out of
+                the grid. Scale the fleet from {data.fleet.batteryCount} batteries
+                to thousands, and the same arithmetic — clean in, dirty out —
+                turns these tonnes into megatonnes.
+              </p>
             </div>
           </div>
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter fleet={data.fleet} />
 
       <ControlPanel open={panelOpen} onOpenChange={setPanelOpen} />
     </VizConfigProvider>

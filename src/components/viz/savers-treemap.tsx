@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { hierarchy, treemap } from "d3";
-import type { CountryEmission } from "@/lib/types";
+import type { CustomerSaving } from "@/lib/types";
 import { categoryColors } from "@/lib/palettes";
-import { formatMtRaw, formatPercent, formatPerCapita } from "@/lib/format";
+import { formatTonnes2, formatPercent, formatInt } from "@/lib/format";
 import { useVizConfig } from "./viz-config";
 import {
   ChartFrame,
@@ -17,44 +17,51 @@ import {
 
 const NEUTRAL = "#3a4658";
 
+const COUNTRY_NAMES: Record<string, string> = {
+  NL: "Netherlands",
+  BE: "Belgium",
+};
+const countryName = (c: string) => COUNTRY_NAMES[c] ?? c;
+
 interface RootDatum {
   name: "root";
-  children: CountryEmission[];
+  children: CustomerSaving[];
 }
-type TreeDatum = RootDatum | CountryEmission;
+type TreeDatum = RootDatum | CustomerSaving;
 
-const isLeaf = (d: TreeDatum): d is CountryEmission => "co2_mt" in d;
+const isLeaf = (d: TreeDatum): d is CustomerSaving => "savedKg" in d;
 
-export function EmittersTreemap({ data }: { data: CountryEmission[] }) {
+export function SaversTreemap({ data }: { data: CustomerSaving[] }) {
   const { palette, config } = useVizConfig();
   const [hover, setHover] = useState<{
-    c: CountryEmission;
+    c: CustomerSaving;
     x: number;
     y: number;
   } | null>(null);
 
-  // Colour by region; biggest regions get the leading palette colours.
+  // Colour by country; the country saving the most carbon leads the palette.
   const { colors, legendItems } = useMemo(() => {
     const totals = new Map<string, number>();
     for (const c of data) {
-      if (c.region === "Other") continue;
-      totals.set(c.region, (totals.get(c.region) ?? 0) + c.co2_mt);
+      totals.set(c.country, (totals.get(c.country) ?? 0) + c.savedKg);
     }
     const ordered = [...totals.entries()]
       .sort((a, b) => b[1] - a[1])
-      .map(([r]) => r);
+      .map(([k]) => k);
     const map = categoryColors(palette, ordered);
-    map.set("Other", NEUTRAL);
     return {
       colors: map,
-      legendItems: ordered.map((r) => ({ label: r, color: map.get(r)! })),
+      legendItems: ordered.map((k) => ({
+        label: countryName(k),
+        color: map.get(k)!,
+      })),
     };
   }, [palette, data]);
 
   const root = useMemo(
     () =>
       hierarchy<TreeDatum>({ name: "root", children: data })
-        .sum((d) => (isLeaf(d) ? d.co2_mt : 0))
+        .sum((d) => (isLeaf(d) ? d.savedKg : 0))
         .sort((a, b) => (b.value ?? 0) - (a.value ?? 0)),
     [data],
   );
@@ -73,39 +80,35 @@ export function EmittersTreemap({ data }: { data: CountryEmission[] }) {
 
           return (
             <>
-              <svg width={width} height={height} role="img" aria-label="Treemap of CO₂ emissions by country">
+              <svg
+                width={width}
+                height={height}
+                role="img"
+                aria-label="Treemap of CO₂ saved by customer"
+              >
                 {leaves.map((leaf, i) => {
                   if (!isLeaf(leaf.data)) return null;
                   const c = leaf.data;
                   const w = (leaf.x1 ?? 0) - (leaf.x0 ?? 0);
                   const h = (leaf.y1 ?? 0) - (leaf.y0 ?? 0);
                   if (w <= 0 || h <= 0) return null;
-                  const fill = colors.get(c.region) ?? NEUTRAL;
-                  const showLabel = w > 52 && h > 30;
-                  const showName = w > 78;
-                  const isHover = hover?.c.country === c.country;
+                  const fill = colors.get(c.country) ?? NEUTRAL;
+                  const showLabel = w > 70 && h > 34;
+                  const isHover = hover?.c.id === c.id;
 
                   return (
                     <g
-                      key={c.country}
+                      key={c.id}
                       transform={`translate(${leaf.x0},${leaf.y0})`}
                       onMouseEnter={(e) => {
                         const r =
                           e.currentTarget.ownerSVGElement!.getBoundingClientRect();
-                        setHover({
-                          c,
-                          x: e.clientX - r.left,
-                          y: e.clientY - r.top,
-                        });
+                        setHover({ c, x: e.clientX - r.left, y: e.clientY - r.top });
                       }}
                       onMouseMove={(e) => {
                         const r =
                           e.currentTarget.ownerSVGElement!.getBoundingClientRect();
-                        setHover({
-                          c,
-                          x: e.clientX - r.left,
-                          y: e.clientY - r.top,
-                        });
+                        setHover({ c, x: e.clientX - r.left, y: e.clientY - r.top });
                       }}
                       onMouseLeave={() => setHover(null)}
                       style={{
@@ -117,7 +120,7 @@ export function EmittersTreemap({ data }: { data: CountryEmission[] }) {
                           (leaf.y0 ?? 0) + h / 2
                         }px`,
                         transition: config.animate
-                          ? `opacity 0.5s ease ${i * 11}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 11}ms`
+                          ? `opacity 0.5s ease ${i * 40}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 40}ms`
                           : undefined,
                       }}
                     >
@@ -133,20 +136,29 @@ export function EmittersTreemap({ data }: { data: CountryEmission[] }) {
                       />
                       {showLabel && (
                         <text
-                          x={9}
-                          y={19}
-                          className="pointer-events-none fill-black/85 text-[11px] font-semibold"
+                          x={11}
+                          y={22}
+                          className="pointer-events-none fill-black/85 text-[12px] font-semibold"
                         >
-                          {showName ? c.country : c.iso3}
+                          {c.name}
                         </text>
                       )}
-                      {showLabel && config.showValues && h > 44 && (
+                      {showLabel && h > 50 && (
                         <text
-                          x={9}
-                          y={34}
-                          className="tabular pointer-events-none fill-black/65 text-[10px] font-medium"
+                          x={11}
+                          y={39}
+                          className="pointer-events-none fill-black/65 text-[10px] font-medium"
                         >
-                          {formatMtRaw(c.co2_mt)}
+                          {c.profileLabel}
+                        </text>
+                      )}
+                      {showLabel && config.showValues && h > 70 && (
+                        <text
+                          x={11}
+                          y={h - 12}
+                          className="tabular pointer-events-none fill-black/80 text-[13px] font-semibold"
+                        >
+                          {formatTonnes2(c.savedTonnes)}
                         </text>
                       )}
                     </g>
@@ -163,20 +175,21 @@ export function EmittersTreemap({ data }: { data: CountryEmission[] }) {
                       y: hover.y,
                       content: (
                         <div className="flex flex-col gap-1">
-                          <TooltipTitle>{hover.c.country}</TooltipTitle>
+                          <TooltipTitle>{hover.c.name}</TooltipTitle>
                           <TooltipRow
-                            label="Emissions"
-                            swatch={colors.get(hover.c.region)}
-                            value={formatMtRaw(hover.c.co2_mt)}
+                            label="CO₂ saved"
+                            swatch={colors.get(hover.c.country)}
+                            value={formatTonnes2(hover.c.savedTonnes)}
                           />
                           <TooltipRow
-                            label="Share of world"
-                            value={formatPercent(hover.c.share_global_pct)}
+                            label="Emissions cut"
+                            value={formatPercent(hover.c.pctReduction)}
                           />
                           <TooltipRow
-                            label="Per person"
-                            value={formatPerCapita(hover.c.co2_per_capita_t)}
+                            label="Batteries steered"
+                            value={formatInt(hover.c.nBatteries)}
                           />
+                          <TooltipRow label="Site" value={hover.c.location} />
                         </div>
                       ),
                     } as TooltipState

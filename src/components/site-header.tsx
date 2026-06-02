@@ -4,10 +4,10 @@ import { SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const NAV = [
-  { href: "#trajectory", label: "Trajectory" },
-  { href: "#emitters", label: "Emitters" },
-  { href: "#per-person", label: "Per person" },
-  { href: "#sectors", label: "Sectors" },
+  { href: "#savings", label: "Savings" },
+  { href: "#savers", label: "Top savers" },
+  { href: "#efficiency", label: "Efficiency" },
+  { href: "#mix", label: "The mix" },
 ];
 
 export function SiteHeader({ onCustomize }: { onCustomize: () => void }) {

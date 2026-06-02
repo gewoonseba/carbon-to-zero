@@ -2,17 +2,18 @@
 
 import { useEffect, useId, useMemo, useState } from "react";
 import { scaleLinear, max, area, line, curveMonotoneX } from "d3";
-import type { RegionTrend } from "@/lib/types";
+import type { FleetTrendPoint } from "@/lib/types";
 import { useVizConfig } from "./viz-config";
 
 const W = 1200;
 const H = 420;
 
 /**
- * The faint emissions silhouette behind the hero. Uses a fixed viewBox so it
- * scales fluidly, with the top line drawing itself in on mount.
+ * The faint silhouette behind the hero — the fleet's cumulative CO₂ savings
+ * climbing over time. Fixed viewBox so it scales fluidly, with the top line
+ * drawing itself in on mount.
  */
-export function HeroBackdrop({ data }: { data: RegionTrend }) {
+export function HeroBackdrop({ points }: { points: FleetTrendPoint[] }) {
   const { palette, config } = useVizConfig();
   const gradId = useId();
   const [drawn, setDrawn] = useState(false);
@@ -23,27 +24,23 @@ export function HeroBackdrop({ data }: { data: RegionTrend }) {
   }, []);
 
   const { areaPath, linePath } = useMemo(() => {
-    const totals = data.rows.map((d) => ({
-      year: d.year,
-      total: data.regions.reduce((s, r) => s + (d[r] ?? 0), 0),
-    }));
     const x = scaleLinear()
-      .domain([totals[0].year, totals[totals.length - 1].year])
+      .domain([0, Math.max(1, points.length - 1)])
       .range([0, W]);
     const y = scaleLinear()
-      .domain([0, max(totals, (d) => d.total) ?? 0])
+      .domain([0, max(points, (d) => d.cum) ?? 0])
       .range([H, H * 0.18]);
-    const a = area<(typeof totals)[number]>()
-      .x((d) => x(d.year))
+    const a = area<FleetTrendPoint>()
+      .x((_, i) => x(i))
       .y0(H)
-      .y1((d) => y(d.total))
+      .y1((d) => y(d.cum))
       .curve(curveMonotoneX);
-    const l = line<(typeof totals)[number]>()
-      .x((d) => x(d.year))
-      .y((d) => y(d.total))
+    const l = line<FleetTrendPoint>()
+      .x((_, i) => x(i))
+      .y((d) => y(d.cum))
       .curve(curveMonotoneX);
-    return { areaPath: a(totals) ?? "", linePath: l(totals) ?? "" };
-  }, [data]);
+    return { areaPath: a(points) ?? "", linePath: l(points) ?? "" };
+  }, [points]);
 
   const animate = config.animate;
 

@@ -1,35 +1,32 @@
 import type { CSSProperties } from "react";
 import { ArrowDown } from "lucide-react";
-import type { EmissionsData } from "@/lib/types";
-import { formatGt, formatPercentInt, formatPerCapita } from "@/lib/format";
+import { timeFormat } from "d3";
+import type { SavingsData } from "@/lib/types";
+import { formatTonnes, formatInt, formatPercentInt } from "@/lib/format";
 import { HeroBackdrop } from "@/components/viz/hero-backdrop";
 import { AnimatedStat } from "@/components/viz/animated-stat";
 
-export function Hero({ data }: { data: EmissionsData }) {
-  const last = data.regionTrend.rows[data.regionTrend.rows.length - 1];
-  const global = data.regionTrend.regions.reduce(
-    (s, r) => s + (last[r] ?? 0),
-    0,
-  );
-  const top3 = data.countries
-    .filter((c) => c.region !== "Other")
-    .slice(0, 3)
-    .reduce((s, c) => s + c.share_global_pct, 0);
-  const perCapita =
-    data.countries.reduce((s, c) => s + c.co2_mt, 0) /
-    data.countries.reduce((s, c) => s + c.population_millions, 0);
+const sinceLabel = timeFormat("%B %Y");
+
+export function Hero({ data }: { data: SavingsData }) {
+  const { fleet } = data;
+  const since = sinceLabel(new Date(`${fleet.since}T00:00:00Z`));
 
   const stats = [
-    { value: global, format: formatGt, label: "CO₂ emitted worldwide in 2022" },
     {
-      value: top3,
-      format: (n: number) => formatPercentInt(n),
-      label: "comes from just three countries",
+      value: fleet.totalSavedTonnes,
+      format: formatTonnes,
+      label: `CO₂ kept out of the grid since ${since}`,
     },
     {
-      value: perCapita,
-      format: formatPerCapita,
-      label: "emitted per person, every year",
+      value: fleet.batteryCount,
+      format: formatInt,
+      label: `batteries steered across ${fleet.customerCount} customer sites`,
+    },
+    {
+      value: fleet.bestReductionPct,
+      format: formatPercentInt,
+      label: "emissions cut at our best-steered site",
     },
   ];
 
@@ -47,7 +44,7 @@ export function Hero({ data }: { data: EmissionsData }) {
           }
         />
         <div className="bg-grid absolute inset-0 opacity-70" />
-        <HeroBackdrop data={data.regionTrend} />
+        <HeroBackdrop points={data.fleetTrend} />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
       </div>
 
@@ -55,19 +52,20 @@ export function Hero({ data }: { data: EmissionsData }) {
         <div className="reveal is-visible">
           <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-accent-brand">
             <span className="inline-block size-1.5 rounded-full bg-accent-brand" />
-            Emissions Atlas · 1950–2022
+            Companion Energy · CO₂ avoided since {since}
           </p>
 
           <h1 className="mt-7 max-w-4xl font-display text-6xl font-medium leading-[0.98] tracking-[-0.03em] text-balance text-foreground sm:text-7xl md:text-8xl">
-            Carbon,
+            Steering carbon
             <br className="hidden sm:block" /> to{" "}
             <span className="text-brand-gradient">zero.</span>
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            A visual atlas of where the world&rsquo;s CO₂ comes from — who emits
-            it, how it has grown across seven decades, and the distance still
-            left to net&nbsp;zero.
+            We orchestrate our customers&rsquo; batteries to charge on clean
+            power and discharge when the grid is dirtiest. This is the carbon
+            that never reached the atmosphere &mdash; and the sites making it
+            happen.
           </p>
         </div>
 
@@ -92,10 +90,10 @@ export function Hero({ data }: { data: EmissionsData }) {
       </div>
 
       <a
-        href="#trajectory"
+        href="#savings"
         className="group absolute inset-x-0 bottom-8 z-10 mx-auto hidden w-fit items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground sm:flex"
       >
-        Explore the data
+        See the savings
         <ArrowDown className="size-3.5 animate-bounce [animation-duration:1.8s]" />
       </a>
     </section>

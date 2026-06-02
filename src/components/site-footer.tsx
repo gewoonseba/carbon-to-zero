@@ -1,4 +1,7 @@
-export function SiteFooter() {
+import type { FleetTotal } from "@/lib/types";
+import { formatTonnes, formatInt } from "@/lib/format";
+
+export function SiteFooter({ fleet }: { fleet: FleetTotal }) {
   return (
     <footer className="border-t border-white/[0.06] bg-background">
       <div className="mx-auto w-full max-w-6xl px-6 py-14 sm:px-8">
@@ -13,25 +16,30 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              An interactive atlas of global CO₂ emissions, rendered entirely on
-              the client with D3 and a static CSV dataset.
+              A live ledger of the CO₂ Companion Energy avoids by steering
+              customers&rsquo; batteries — rendered on the client with D3 over
+              the Carbon Reporting API.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-x-12 gap-y-2 text-sm">
             <span className="text-muted-foreground">Built with</span>
             <span className="text-foreground">Next.js · D3 · Tailwind</span>
-            <span className="text-muted-foreground">Data shape</span>
-            <span className="text-foreground">Our World in Data (2022)</span>
-            <span className="text-muted-foreground">Figures</span>
-            <span className="text-foreground">Illustrative</span>
+            <span className="text-muted-foreground">Data source</span>
+            <span className="text-foreground">Companion Carbon Reporting</span>
+            <span className="text-muted-foreground">CO₂ saved</span>
+            <span className="text-foreground">
+              {formatTonnes(fleet.totalSavedTonnes)} · {formatInt(fleet.batteryCount)}{" "}
+              batteries
+            </span>
           </div>
         </div>
 
         <p className="mt-10 text-xs leading-relaxed text-muted-foreground/60">
-          Figures are anchored on real-world fossil-CO₂ estimates and smoothed
-          for presentation. This page is a design demonstration, not a primary
-          data source.
+          Figures use mock fixtures calibrated to a real fleet workbook.
+          Avoided emissions compare actual grid draw against a counterfactual
+          with the battery backed out, priced at each interval&rsquo;s grid
+          carbon intensity.
         </p>
       </div>
     </footer>
