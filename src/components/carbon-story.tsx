@@ -68,14 +68,15 @@ export function CarbonStory({ data }: { data: EmissionsData }) {
         </Section>
 
         {/* closing */}
-        <section className="relative overflow-hidden">
+        <section className="bg-background relative overflow-hidden">
           <div
             className="gradient-glow pointer-events-none absolute inset-0"
             style={
               {
-                "--grad-y": "10%",
-                "--grad-height": "120%",
-                "--grad-size": "120%",
+                "--grad-x": "50%",
+                "--grad-y": "50%",
+                "--grad-height": "64%",
+                "--grad-size": "70%",
               } as CSSProperties
             }
           />
