@@ -35,12 +35,12 @@ export function Section({
           <span className="tabular font-mono text-xs text-accent-brand">
             {index}
           </span>
-          <span className="text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground">
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent-brand">
             {eyebrow}
           </span>
           <span className="rule-accent h-px flex-1" />
         </div>
-        <h2 className="mt-5 font-display text-4xl font-medium leading-[1.04] tracking-tight text-balance text-foreground sm:text-5xl md:text-[3.4rem]">
+        <h2 className="mt-5 font-display text-4xl font-medium leading-[1.04] tracking-[-0.022em] text-balance text-foreground sm:text-5xl md:text-[3.4rem]">
           {title}
         </h2>
         {lede ? (

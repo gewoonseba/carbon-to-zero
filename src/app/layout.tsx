@@ -1,25 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import localFont from "next/font/local";
+import { IBM_Plex_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
-const geistSans = Geist({
+// Aspekta — the primary typeface for the whole site (display, headings, body,
+// UI). Self-hosted variable font (SIL OFL, weights 100–900).
+const aspekta = localFont({
+  src: "./fonts/AspektaVF.woff2",
   variable: "--font-sans",
-  subsets: ["latin"],
+  weight: "100 900",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+// IBM Plex Mono — technical/mono accent for section labels, indices and data
+// figures. A Google Fonts substitute for the brand's "TG Frekuent Mono".
+const plexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  display: "swap",
-});
-
-// High-contrast variable serif for editorial display type.
-const fraunces = Fraunces({
-  variable: "--font-display",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0d11",
+  themeColor: "#05060e",
   colorScheme: "dark",
 };
 
@@ -43,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`dark ${aspekta.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <TooltipProvider delayDuration={120}>{children}</TooltipProvider>

@@ -81,7 +81,7 @@ export function ControlPanel({
       <Sheet open={open} onOpenChange={onOpenChange}>
         <SheetContent
           side="right"
-          className="w-full gap-0 overflow-y-auto border-white/10 bg-card/95 backdrop-blur-xl sm:max-w-md"
+          className="w-full gap-0 overflow-y-auto border-white/10 bg-card/95 shadow-brand backdrop-blur-xl sm:max-w-md"
         >
           <SheetHeader className="border-b border-white/10">
             <SheetTitle className="font-display text-2xl">
@@ -182,7 +182,7 @@ export function ControlPanel({
               type="button"
               variant="outline"
               onClick={reset}
-              className="mt-1 gap-2"
+              className="mt-1 gap-2 rounded-full"
             >
               <RotateCcw data-icon="inline-start" />
               Reset to defaults

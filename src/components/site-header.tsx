@@ -40,7 +40,7 @@ export function SiteHeader({ onCustomize }: { onCustomize: () => void }) {
           variant="outline"
           size="sm"
           onClick={onCustomize}
-          className="gap-2 border-white/15 bg-white/[0.03]"
+          className="gap-2 rounded-full border-white/15 bg-white/[0.03]"
         >
           <SlidersHorizontal data-icon="inline-start" />
           <span className="hidden sm:inline">Customize</span>

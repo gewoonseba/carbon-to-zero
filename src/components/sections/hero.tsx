@@ -41,15 +41,15 @@ export function Hero({ data }: { data: EmissionsData }) {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-24 pt-28 sm:px-8">
         <div className="reveal is-visible">
-          <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
+          <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-accent-brand">
             <span className="inline-block size-1.5 rounded-full bg-accent-brand" />
             Emissions Atlas · 1950–2022
           </p>
 
-          <h1 className="mt-7 max-w-4xl font-display text-6xl font-medium leading-[0.98] tracking-tight text-balance text-foreground sm:text-7xl md:text-8xl">
+          <h1 className="mt-7 max-w-4xl font-display text-6xl font-medium leading-[0.98] tracking-[-0.03em] text-balance text-foreground sm:text-7xl md:text-8xl">
             Carbon,
             <br className="hidden sm:block" /> to{" "}
-            <span className="italic text-accent-brand">zero.</span>
+            <span className="text-brand-gradient">zero.</span>
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
@@ -60,7 +60,7 @@ export function Hero({ data }: { data: EmissionsData }) {
         </div>
 
         {/* KPI strip */}
-        <div className="mt-16 grid max-w-4xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] sm:grid-cols-3">
+        <div className="mt-16 grid max-w-4xl grid-cols-1 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-brand sm:grid-cols-3">
           {stats.map((s) => (
             <div
               key={s.label}

@@ -14,6 +14,17 @@ export interface Palette {
 
 export const PALETTES: Palette[] = [
   {
+    id: "indigo",
+    label: "Indigo",
+    description: "The Companion brand — purple, lavender and rose.",
+    accent: "#5d5fef",
+    categorical: [
+      "#5d5fef", "#8587ff", "#a78bfa", "#c4b5fd",
+      "#f77c0e", "#2dd4bf", "#fb7185", "#38bdf8",
+    ],
+    ramp: ["#181146", "#5d5fef", "#9d94ed", "#ddc9ea"],
+  },
+  {
     id: "aurora",
     label: "Aurora",
     description: "Mint, teal and cyan over near-black.",
@@ -59,7 +70,7 @@ export const PALETTES: Palette[] = [
   },
 ];
 
-export const DEFAULT_PALETTE_ID = "aurora";
+export const DEFAULT_PALETTE_ID = "indigo";
 
 export function getPalette(id: string): Palette {
   return PALETTES.find((p) => p.id === id) ?? PALETTES[0];

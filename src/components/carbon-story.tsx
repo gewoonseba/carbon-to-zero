@@ -70,12 +70,12 @@ export function CarbonStory({ data }: { data: EmissionsData }) {
         {/* closing */}
         <section className="mx-auto w-full max-w-6xl px-6 py-28 sm:px-8 md:py-36">
           <div className="reveal is-visible mx-auto max-w-3xl text-center">
-            <p className="text-xs font-medium uppercase tracking-[0.24em] text-accent-brand">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent-brand">
               The road ahead
             </p>
-            <h2 className="mt-6 font-display text-4xl font-medium leading-tight tracking-tight text-balance text-foreground sm:text-5xl md:text-6xl">
+            <h2 className="mt-6 font-display text-4xl font-medium leading-tight tracking-[-0.025em] text-balance text-foreground sm:text-5xl md:text-6xl">
               From thirty-seven gigatonnes,{" "}
-              <span className="italic text-accent-brand">to zero.</span>
+              <span className="text-brand-gradient">to zero.</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Reaching net zero means bending every curve on this page back to

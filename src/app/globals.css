@@ -9,8 +9,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-  --font-display: var(--font-display);
-  --font-heading: var(--font-display);
+  /* Aspekta carries display + headings too — DESIGN.md uses one typeface. */
+  --font-display: var(--font-sans);
+  --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -43,6 +44,9 @@
   /* brand accent (driven by the active visualisation palette) */
   --color-accent-brand: var(--c2z-accent);
   --color-accent-brand-soft: var(--c2z-accent-soft);
+  /* purple ambient elevation, per DESIGN.md */
+  --shadow-brand: 0 42px 42px -21px rgba(207, 151, 255, 0.16),
+    0 24px 20px -16px rgba(93, 95, 239, 0.14);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -53,80 +57,81 @@
 }
 
 /*
- * Carbon to Zero is a dark-only experience. The light tokens exist only so
- * shadcn components stay valid; the app forces `.dark` on <html>.
+ * Carbon to Zero is a dark-only experience styled after the Companion Energy
+ * design system: deep indigo-black surfaces, a signature purple accent, and a
+ * luminous purple→lavender→rose gradient on key words. The app forces `.dark`.
  */
 :root {
-  --radius: 0.75rem;
+  --radius: 1rem;
   /* active accent — overridden live by the palette switcher (see viz-config) */
-  --c2z-accent: oklch(0.84 0.15 172);
-  --c2z-accent-soft: oklch(0.84 0.15 172 / 0.16);
+  --c2z-accent: #5d5fef;
+  --c2z-accent-soft: rgba(93, 95, 239, 0.16);
 
-  --background: oklch(0.98 0 0);
-  --foreground: oklch(0.16 0.01 255);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.01 255);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.01 255);
+  --background: #fefefe;
+  --foreground: #1b2540;
+  --card: #ffffff;
+  --card-foreground: #1b2540;
+  --popover: #ffffff;
+  --popover-foreground: #1b2540;
   --primary: var(--c2z-accent);
-  --primary-foreground: oklch(0.16 0.02 255);
-  --secondary: oklch(0.96 0.005 255);
-  --secondary-foreground: oklch(0.2 0.01 255);
-  --muted: oklch(0.96 0.005 255);
-  --muted-foreground: oklch(0.5 0.01 255);
-  --accent: oklch(0.96 0.005 255);
-  --accent-foreground: oklch(0.2 0.01 255);
-  --destructive: oklch(0.62 0.21 25);
-  --border: oklch(0.9 0.005 255);
-  --input: oklch(0.9 0.005 255);
+  --primary-foreground: #ffffff;
+  --secondary: #f2f2f2;
+  --secondary-foreground: #1b2540;
+  --muted: #f8f8f8;
+  --muted-foreground: #7c7c8b;
+  --accent: #f2f2f2;
+  --accent-foreground: #1b2540;
+  --destructive: #ba1a1a;
+  --border: rgba(27, 37, 64, 0.16);
+  --input: rgba(27, 37, 64, 0.16);
   --ring: var(--c2z-accent);
   --chart-1: var(--c2z-accent);
-  --chart-2: oklch(0.7 0.13 230);
-  --chart-3: oklch(0.82 0.15 85);
-  --chart-4: oklch(0.65 0.2 25);
-  --chart-5: oklch(0.7 0.15 310);
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.16 0.01 255);
+  --chart-2: #8587ff;
+  --chart-3: #f77c0e;
+  --chart-4: #fb7185;
+  --chart-5: #2dd4bf;
+  --sidebar: #fefefe;
+  --sidebar-foreground: #1b2540;
   --sidebar-primary: var(--c2z-accent);
-  --sidebar-primary-foreground: oklch(0.16 0.02 255);
-  --sidebar-accent: oklch(0.96 0.005 255);
-  --sidebar-accent-foreground: oklch(0.2 0.01 255);
-  --sidebar-border: oklch(0.9 0.005 255);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f2f2f2;
+  --sidebar-accent-foreground: #1b2540;
+  --sidebar-border: rgba(27, 37, 64, 0.16);
   --sidebar-ring: var(--c2z-accent);
 }
 
 .dark {
-  /* layered near-black surfaces with a faint cool cast */
-  --background: oklch(0.155 0.008 255);
-  --foreground: oklch(0.96 0.004 255);
-  --card: oklch(0.196 0.009 255);
-  --card-foreground: oklch(0.96 0.004 255);
-  --popover: oklch(0.185 0.009 255);
-  --popover-foreground: oklch(0.96 0.004 255);
+  /* deep indigo-black surfaces (DESIGN.md surface-dark / surface-dark-elevated) */
+  --background: #05060e;
+  --foreground: #f9f8f9;
+  --card: #111229;
+  --card-foreground: #f9f8f9;
+  --popover: #15162f;
+  --popover-foreground: #f9f8f9;
   --primary: var(--c2z-accent);
-  --primary-foreground: oklch(0.16 0.02 255);
-  --secondary: oklch(0.24 0.01 255);
-  --secondary-foreground: oklch(0.96 0.004 255);
-  --muted: oklch(0.24 0.01 255);
-  --muted-foreground: oklch(0.66 0.012 255);
-  --accent: oklch(0.26 0.012 255);
-  --accent-foreground: oklch(0.97 0.004 255);
-  --destructive: oklch(0.66 0.2 25);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 12%);
+  --primary-foreground: #0c0a1e;
+  --secondary: #1c1d3c;
+  --secondary-foreground: #f9f8f9;
+  --muted: #15162f;
+  --muted-foreground: #9b9bba;
+  --accent: #201f45;
+  --accent-foreground: #f9f8f9;
+  --destructive: #ff6b6b;
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.12);
   --ring: var(--c2z-accent);
   --chart-1: var(--c2z-accent);
-  --chart-2: oklch(0.72 0.13 230);
-  --chart-3: oklch(0.85 0.16 85);
-  --chart-4: oklch(0.68 0.21 25);
-  --chart-5: oklch(0.72 0.16 310);
-  --sidebar: oklch(0.185 0.009 255);
-  --sidebar-foreground: oklch(0.96 0.004 255);
+  --chart-2: #8587ff;
+  --chart-3: #f77c0e;
+  --chart-4: #fb7185;
+  --chart-5: #2dd4bf;
+  --sidebar: #0a0b1a;
+  --sidebar-foreground: #f9f8f9;
   --sidebar-primary: var(--c2z-accent);
-  --sidebar-primary-foreground: oklch(0.16 0.02 255);
-  --sidebar-accent: oklch(0.26 0.012 255);
-  --sidebar-accent-foreground: oklch(0.97 0.004 255);
-  --sidebar-border: oklch(1 0 0 / 9%);
+  --sidebar-primary-foreground: #0c0a1e;
+  --sidebar-accent: #201f45;
+  --sidebar-accent-foreground: #f9f8f9;
+  --sidebar-border: rgba(255, 255, 255, 0.09);
   --sidebar-ring: var(--c2z-accent);
 }
 
@@ -142,16 +147,16 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* atmospheric depth: faint accent + cool glows over near-black */
+    /* cosmic depth: a large purple light-source plus a faint warm counterpoint */
     background-image:
       radial-gradient(
-        62rem 62rem at 78% -8%,
-        color-mix(in oklch, var(--c2z-accent) 12%, transparent),
+        60rem 60rem at 80% -10%,
+        color-mix(in oklch, var(--c2z-accent) 22%, transparent),
         transparent 60%
       ),
       radial-gradient(
-        50rem 50rem at 8% 4%,
-        oklch(0.72 0.13 230 / 0.1),
+        46rem 46rem at 4% 2%,
+        rgba(247, 124, 14, 0.07),
         transparent 55%
       );
     background-attachment: fixed;
@@ -163,7 +168,6 @@
   /* refined data typography */
   .tabular {
     font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum" 1, "cv01" 1;
   }
 }
 
@@ -178,10 +182,19 @@
       transparent
     );
   }
-}
 
-@utility text-balance {
-  text-wrap: balance;
+  /* luminous accent word — purple→lavender→rose, adapts to the active palette */
+  .text-brand-gradient {
+    background-image: linear-gradient(
+      105deg,
+      var(--c2z-accent) 0%,
+      color-mix(in oklch, var(--c2z-accent) 78%, white) 58%,
+      color-mix(in oklch, var(--c2z-accent) 42%, white) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 /* Scroll-reveal: elements lift + fade in once observed */
