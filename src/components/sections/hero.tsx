@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { ArrowDown } from "lucide-react";
 import type { EmissionsData } from "@/lib/types";
 import { formatGt, formatPercentInt, formatPerCapita } from "@/lib/format";
@@ -34,9 +35,20 @@ export function Hero({ data }: { data: EmissionsData }) {
 
   return (
     <section className="relative flex min-h-[92vh] flex-col justify-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="gradient-glow absolute inset-0"
+          style={
+            {
+              "--grad-y": "-16%",
+              "--grad-height": "84%",
+              "--grad-size": "135%",
+            } as CSSProperties
+          }
+        />
+        <div className="bg-grid absolute inset-0 opacity-70" />
         <HeroBackdrop data={data.regionTrend} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-24 pt-28 sm:px-8">

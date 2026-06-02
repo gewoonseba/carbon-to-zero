@@ -195,6 +195,44 @@
     background-clip: text;
     color: transparent;
   }
+
+  /*
+   * Luminous radial "spotlight" — white core → pale lavender → brand indigo,
+   * fading into the dark canvas. Position/size are tunable per instance via
+   * the --grad-* custom properties (mirrors the source design token).
+   */
+  .gradient-glow {
+    --grad-size: 130%;
+    --grad-height: 95%;
+    --grad-x: 50%;
+    --grad-y: 0%;
+    background: radial-gradient(
+      var(--grad-size) var(--grad-height) at var(--grad-x) var(--grad-y),
+      color-mix(in oklch, white 16%, transparent) 0%,
+      color-mix(in oklch, #e6d6f4 28%, transparent) 18%,
+      color-mix(in oklch, var(--c2z-accent) 40%, transparent) 40%,
+      transparent 70%
+    );
+  }
+
+  /* hairline grid, centre-weighted with a radial mask so edges dissolve */
+  .bg-grid {
+    --grid-size: 64px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    -webkit-mask-image: radial-gradient(
+      ellipse 65% 58% at 50% 38%,
+      #000 18%,
+      transparent 72%
+    );
+    mask-image: radial-gradient(
+      ellipse 65% 58% at 50% 38%,
+      #000 18%,
+      transparent 72%
+    );
+  }
 }
 
 /* Scroll-reveal: elements lift + fade in once observed */

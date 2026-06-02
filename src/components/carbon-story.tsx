@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import type { EmissionsData } from "@/lib/types";
 import { VizConfigProvider } from "@/components/viz/viz-config";
 import { SiteHeader } from "@/components/site-header";
@@ -68,8 +68,20 @@ export function CarbonStory({ data }: { data: EmissionsData }) {
         </Section>
 
         {/* closing */}
-        <section className="mx-auto w-full max-w-6xl px-6 py-28 sm:px-8 md:py-36">
-          <div className="reveal is-visible mx-auto max-w-3xl text-center">
+        <section className="relative overflow-hidden">
+          <div
+            className="gradient-glow pointer-events-none absolute inset-0"
+            style={
+              {
+                "--grad-y": "10%",
+                "--grad-height": "120%",
+                "--grad-size": "120%",
+              } as CSSProperties
+            }
+          />
+          <div className="bg-grid pointer-events-none absolute inset-0" />
+          <div className="relative mx-auto w-full max-w-6xl px-6 py-28 sm:px-8 md:py-40">
+            <div className="reveal is-visible mx-auto max-w-3xl text-center">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent-brand">
               The road ahead
             </p>
@@ -82,6 +94,7 @@ export function CarbonStory({ data }: { data: EmissionsData }) {
               the baseline within a single generation. The data shows the scale
               of the climb — and exactly where the work begins.
             </p>
+            </div>
           </div>
         </section>
       </main>

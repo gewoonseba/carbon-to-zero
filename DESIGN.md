@@ -204,6 +204,25 @@ gradients:
         position: "2%"
       - color: "rgba(255, 255, 255, 0)"
         position: "100%"
+  spotlight:
+    type: radial
+    note: Luminous dome glow over the dark canvas. Position/size tunable via --grad-x/--grad-y/--grad-size/--grad-height.
+    shape: "{grad-size} {grad-height} at {grad-x} {grad-y}"
+    stops:
+      - color: "#ffffff"
+        position: "20%"
+      - color: "#e6d6f4"
+        position: "40%"
+      - color: "#5254d2"
+        position: "60%"
+      - color: "#121212"
+        position: "75%"
+      - color: "#121212"
+        position: "100%"
+backgroundGrid:
+  lineColor: "rgba(255, 255, 255, 0.045)"
+  size: 64px
+  mask: radial-gradient(ellipse 65% 58% at 50% 38%, #000 18%, transparent 72%)
 components:
   button-primary:
     backgroundColor: "{colors.inverse-surface}"
@@ -276,9 +295,11 @@ The visual identity is **premium, luminous, and confident**. It fuses a clean wh
 
 The emotional arc of the page flows from **awe** (hero with cosmic purple gradient backdrop) through **credibility** (real product screenshots, customer quotes, team photos) to **trust** (location, enterprise logos, clear CTA).
 
+> **This implementation is dark-mode-first.** The Carbon to Zero atlas renders entirely on a deep indigo-black canvas (`#05060E`) — the brand's "dark zones" become the whole experience. The signature purple is carried by luminous radial spotlight gradients and a faint, centre-masked grid rather than by alternating light/dark sections. The light tokens below remain part of the system but are unused on this surface.
+
 ## Colors
 
-The palette is built on a light–dark duality. Most content sections sit on near-white (`#FEFEFE`) surfaces, while the hero, quote carousel, product showcase, and footer use deep dark backgrounds (`#05060E`, `#201F45`) that showcase the brand purple.
+The palette is built on a light–dark duality. In the full marketing system, most content sections sit on near-white (`#FEFEFE`) surfaces, while the hero, quote carousel, product showcase, and footer use deep dark backgrounds (`#05060E`, `#201F45`) that showcase the brand purple. **The Carbon to Zero atlas commits fully to the dark side of that duality:** `#05060E` is the canvas, `#201F45` the elevated surface, and the brand purple appears as accents, gradient-clipped headline words, and atmospheric light.
 
 - **Primary Purple `#5D5FEF`:** The signature accent. Used for interactive elements (active tabs, links, badges, outlined buttons), section labels, and — critically — as a radial gradient on highlighted text within section headings. This gradient sweeps from saturated purple through lavender to pale rose (`#DDC9EA`), creating a luminous "glow" on key phrases.
 - **Dark Navy `#1B2540`:** All primary text on light backgrounds. Never pure black — the slight blue undertone ties text to the brand.
@@ -318,6 +339,13 @@ Depth is achieved through three layered systems that work together:
 - **Backdrop Blur Glass:** On dark backgrounds, surfaces use `backdrop-filter: blur(20–50px)` with white at 10–30% opacity. The nav trust badge, newsletter card, and footer contact area all use this treatment.
 - **Decorative Blurs:** Large, unfocused purple and warm-orange shapes (`blur(29px)`, `blur(50px)`) sit behind content as atmospheric "light sources." These are purely decorative — they create the cosmic, luminous backdrop without being interactive.
 - **Photo Overlays:** Team and location photos use a gradient-to-transparent overlay with `backdrop-blur(50px)` to softly integrate with surrounding content.
+
+## Background Treatments
+
+On the dark canvas, atmosphere is built from two layered, purely decorative systems behind the content:
+
+- **Luminous radial spotlights (`gradients.spotlight`):** A large radial dome — white core → pale lavender (`#E6D6F4`) → brand indigo (`#5254D2` / `#5D5FEF`) → dark canvas — anchored to the top of the hero and behind the closing statement. Position and size are driven by `--grad-x`, `--grad-y`, `--grad-size`, and `--grad-height`, so each instance can be aimed independently. The focal point usually sits just above the section (`--grad-y` negative) so the brightest bloom stays off-canvas and only the lavender-to-indigo falloff enters the frame, keeping headline text readable. The glow's indigo stop is bound to the active palette accent, so it re-tints when the palette changes.
+- **Masked hairline grid (`backgroundGrid`):** A 64px hairline grid at ~4.5% white, faded with a centre-weighted radial mask (`ellipse 65% 58% at 50% 38%`) so the lines are crisp in the middle and dissolve entirely toward the edges. It sits beneath the spotlight to add quiet technical structure without ever competing with the data. Grids are used only in decorative zones (hero, closing) — never behind a chart.
 
 ## Shapes
 
