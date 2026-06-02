@@ -4,6 +4,7 @@ import { cache } from "react";
 import { timeDay } from "d3";
 import type {
   CustomerSaving,
+  CustomerSeries,
   FleetTotal,
   FleetTrendPoint,
   SavingsData,
@@ -76,6 +77,19 @@ export const getSavingsData = cache((): SavingsData => {
   const timelines = index.customers.map((c) =>
     readJson<TimelineFile>("timelines", `${c.customer_id}.json`),
   );
+
+  // ---- per-customer raw daily series (drives client-side filtering) ------
+  const series: CustomerSeries[] = index.customers.map((c, i) => ({
+    id: c.customer_id,
+    name: c.name,
+    steeringStart: c.steering_start_date,
+    points: timelines[i].series.map((row) => ({
+      date: row.date,
+      withKg: row.co2_with_kg,
+      withoutKg: row.co2_without_kg,
+      savedKg: row.co2_saved_kg,
+    })),
+  }));
 
   // ---- per-customer headline (totals + index metadata) -------------------
   const customers: CustomerSaving[] = index.customers.map((c, i) => {
@@ -164,5 +178,7 @@ export const getSavingsData = cache((): SavingsData => {
     fleetReductionPct: (totalSavedKg / totalWithoutKg) * 100,
   };
 
-  return { fleet, customers, trend, fleetTrend };
+  const range = { min: fmtDate(minDate), max: fmtDate(maxDate) };
+
+  return { fleet, customers, trend, fleetTrend, series, range };
 });

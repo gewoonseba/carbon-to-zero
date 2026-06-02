@@ -1,7 +1,8 @@
 "use client";
 
-import { SlidersHorizontal } from "lucide-react";
+import { Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const NAV = [
   { href: "#savings", label: "Savings" },
@@ -11,7 +12,13 @@ const NAV = [
   { href: "#cars", label: "In cars" },
 ];
 
-export function SiteHeader({ onCustomize }: { onCustomize: () => void }) {
+export function SiteHeader({
+  onOpenFilters,
+  filterCount = 0,
+}: {
+  onOpenFilters: () => void;
+  filterCount?: number;
+}) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
@@ -40,11 +47,19 @@ export function SiteHeader({ onCustomize }: { onCustomize: () => void }) {
           type="button"
           variant="outline"
           size="sm"
-          onClick={onCustomize}
+          onClick={onOpenFilters}
           className="gap-2 rounded-full border-white/15 bg-white/[0.03]"
         >
-          <SlidersHorizontal data-icon="inline-start" />
-          <span className="hidden sm:inline">Customize</span>
+          <Filter data-icon="inline-start" />
+          <span className="hidden sm:inline">Filter</span>
+          {filterCount > 0 && (
+            <Badge
+              variant="secondary"
+              className="ml-0.5 size-5 rounded-full px-0 tabular"
+            >
+              {filterCount}
+            </Badge>
+          )}
         </Button>
       </div>
     </header>

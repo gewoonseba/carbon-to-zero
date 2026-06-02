@@ -61,10 +61,36 @@ export interface FleetTrendPoint {
   cum: number;
 }
 
+/** One day of a customer's raw (non-cumulative) savings. */
+export interface CustomerDailyPoint {
+  date: string;
+  /** Actual emissions with steering, kg CO₂. */
+  withKg: number;
+  /** Counterfactual emissions without the battery, kg CO₂. */
+  withoutKg: number;
+  /** Avoided emissions that day, kg CO₂. */
+  savedKg: number;
+}
+
+/**
+ * A customer's full daily timeline, kept raw so the client can recompute
+ * window totals for any date range (mirrors `GET .../timeline?from&to`).
+ */
+export interface CustomerSeries {
+  id: string;
+  name: string;
+  steeringStart: string;
+  points: CustomerDailyPoint[];
+}
+
 export interface SavingsData {
   fleet: FleetTotal;
   customers: CustomerSaving[];
   trend: SavingsTrend;
   /** Fleet cumulative total per day — drives the hero backdrop. */
   fleetTrend: FleetTrendPoint[];
+  /** Per-customer raw daily series — drives client-side date filtering. */
+  series: CustomerSeries[];
+  /** Inclusive selectable date bounds across the whole fleet (ISO yyyy-mm-dd). */
+  range: { min: string; max: string };
 }

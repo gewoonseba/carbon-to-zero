@@ -64,6 +64,17 @@ export function SavingsWaffle({ data }: { data: CustomerSaving[] }) {
   const maxShare = share(sorted[0]) || 1;
   const animate = config.animate && inView;
 
+  if (totalKg <= 0) {
+    return (
+      <p
+        ref={ref}
+        className="rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-16 text-center text-sm text-muted-foreground"
+      >
+        No CO₂ saved by the selected sites in this window.
+      </p>
+    );
+  }
+
   return (
     <div
       ref={ref}
