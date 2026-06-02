@@ -8,6 +8,7 @@ const NAV = [
   { href: "#savers", label: "Top savers" },
   { href: "#efficiency", label: "Efficiency" },
   { href: "#mix", label: "The mix" },
+  { href: "#cars", label: "In cars" },
 ];
 
 export function SiteHeader({ onCustomize }: { onCustomize: () => void }) {
