@@ -13,6 +13,7 @@ import { SavingsArea } from "@/components/viz/savings-area";
 import { SaversTreemap } from "@/components/viz/savers-treemap";
 import { RankingBars } from "@/components/viz/ranking-bars";
 import { SavingsWaffle } from "@/components/viz/savings-waffle";
+import { CarsEquivalent } from "@/components/viz/cars-equivalent";
 
 export function CarbonStory({ data }: { data: SavingsData }) {
   const [panelOpen, setPanelOpen] = useState(false);
@@ -71,6 +72,22 @@ export function CarbonStory({ data }: { data: SavingsData }) {
           source="Each square ≈ 1% of fleet CO₂ saved. Grouped by asset profile."
         >
           <SavingsWaffle data={data.customers} />
+        </Section>
+
+        <Section
+          id="cars"
+          index="05"
+          eyebrow="In human terms"
+          title={
+            <>
+              Picture the savings as{" "}
+              <span className="text-brand-gradient">cars off the road</span>.
+            </>
+          }
+          lede="A tonne of CO₂ is impossible to feel. So here's the fleet's whole avoided total translated into a unit everyone knows — the petrol car — using the EPA's standard yardstick for a year of driving."
+          source="1 car ≈ 4.6 t CO₂/year (US EPA, typical passenger vehicle). Driving and fuel equivalents use ≈18,500 km/car/year and 2.31 kg CO₂/L of petrol; Earth's circumference is 40,075 km."
+        >
+          <CarsEquivalent tonnes={data.fleet.totalSavedTonnes} />
         </Section>
 
         {/* closing */}

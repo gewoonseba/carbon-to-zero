@@ -24,11 +24,13 @@ export function AnimatedStat({
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    // With animation disabled, show the final value immediately — there's no
+    // reason to gate on visibility when nothing is counting up.
     if (!config.animate) {
       const id = requestAnimationFrame(() => setDisplay(value));
       return () => cancelAnimationFrame(id);
     }
+    if (!inView) return;
     let raf = 0;
     let start = 0;
     const tick = (now: number) => {
