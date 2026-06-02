@@ -197,9 +197,11 @@
   }
 
   /*
-   * Luminous radial "spotlight" — white core → pale lavender → brand indigo,
-   * fading into the dark canvas. Position/size are tunable per instance via
-   * the --grad-* custom properties (mirrors the source design token).
+   * Luminous radial "spotlight" — bright violet core → brand indigo, fading
+   * cleanly into the dark canvas. Every stop stays on the brand hue and only
+   * its alpha drops, so the bloom never muddies into a grey-white haze on the
+   * way to fully transparent. Position/size are tunable per instance via the
+   * --grad-* custom properties (mirrors the source design token).
    */
   .gradient-glow {
     --grad-size: 130%;
@@ -208,10 +210,10 @@
     --grad-y: 0%;
     background: radial-gradient(
       var(--grad-size) var(--grad-height) at var(--grad-x) var(--grad-y),
-      color-mix(in oklch, white 16%, transparent) 0%,
-      color-mix(in oklch, #e6d6f4 28%, transparent) 18%,
-      color-mix(in oklch, var(--c2z-accent) 40%, transparent) 40%,
-      transparent 70%
+      color-mix(in oklch, #8e84f2 30%, transparent) 0%,
+      color-mix(in oklch, var(--c2z-accent) 38%, transparent) 28%,
+      color-mix(in oklch, var(--c2z-accent) 16%, transparent) 52%,
+      transparent 74%
     );
   }
 

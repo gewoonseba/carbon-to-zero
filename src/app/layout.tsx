@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { IBM_Plex_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Agentation } from "agentation";
 import "./globals.css";
 
 // Aspekta — the primary typeface for the whole site (display, headings, body,
@@ -46,6 +47,7 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <TooltipProvider delayDuration={120}>{children}</TooltipProvider>
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
   );
