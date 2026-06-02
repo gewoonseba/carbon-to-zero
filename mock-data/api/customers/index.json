@@ -1,0 +1,44 @@
+{
+  "customers": [
+    {
+      "customer_id": "c0a1f2e3-1111-4aaa-8001-helios000001",
+      "name": "Helios Buurtbatterij",
+      "location": "Arnhem, NL",
+      "country": "NL",
+      "steering_start_date": "2026-01-15",
+      "profile": "residential_vpp",
+      "n_batteries": 72,
+      "co2_saved_tonnes": 3.194
+    },
+    {
+      "customer_id": "c0a1f2e3-2222-4bbb-8002-polderwatt02",
+      "name": "Polderwatt Energieopslag",
+      "location": "Eemshaven, NL",
+      "country": "NL",
+      "steering_start_date": "2026-01-01",
+      "profile": "single_ci_battery",
+      "n_batteries": 1,
+      "co2_saved_tonnes": 8.7501
+    },
+    {
+      "customer_id": "c0a1f2e3-3333-4ccc-8003-brouwerij0003",
+      "name": "Brouwerij De Vlaamse Leeuw",
+      "location": "Leuven, BE",
+      "country": "BE",
+      "steering_start_date": "2026-02-01",
+      "profile": "commercial_solar",
+      "n_batteries": 1,
+      "co2_saved_tonnes": 0.9103
+    },
+    {
+      "customer_id": "c0a1f2e3-4444-4ddd-8004-groeneweide04",
+      "name": "Groene Weide Co\u00f6peratie",
+      "location": "Gent, BE",
+      "country": "BE",
+      "steering_start_date": "2026-03-01",
+      "profile": "residential_vpp",
+      "n_batteries": 14,
+      "co2_saved_tonnes": 0.1905
+    }
+  ]
+}

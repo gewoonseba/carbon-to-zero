@@ -1,0 +1,857 @@
+{
+  "customer_id": "c0a1f2e3-3333-4ccc-8003-brouwerij0003",
+  "name": "Brouwerij De Vlaamse Leeuw",
+  "steering_start_date": "2026-02-01",
+  "series": [
+    {
+      "date": "2026-02-01",
+      "co2_with_kg": 71.505,
+      "co2_without_kg": 85.296,
+      "co2_saved_kg": 13.791,
+      "cum_saved_kg": 13.791
+    },
+    {
+      "date": "2026-02-02",
+      "co2_with_kg": 128.408,
+      "co2_without_kg": 137.273,
+      "co2_saved_kg": 8.865,
+      "cum_saved_kg": 22.656
+    },
+    {
+      "date": "2026-02-03",
+      "co2_with_kg": 68.747,
+      "co2_without_kg": 74.537,
+      "co2_saved_kg": 5.79,
+      "cum_saved_kg": 28.446
+    },
+    {
+      "date": "2026-02-04",
+      "co2_with_kg": 91.276,
+      "co2_without_kg": 97.171,
+      "co2_saved_kg": 5.895,
+      "cum_saved_kg": 34.342
+    },
+    {
+      "date": "2026-02-05",
+      "co2_with_kg": 94.841,
+      "co2_without_kg": 109.123,
+      "co2_saved_kg": 14.283,
+      "cum_saved_kg": 48.624
+    },
+    {
+      "date": "2026-02-06",
+      "co2_with_kg": 101.417,
+      "co2_without_kg": 108.471,
+      "co2_saved_kg": 7.053,
+      "cum_saved_kg": 55.677
+    },
+    {
+      "date": "2026-02-07",
+      "co2_with_kg": 102.931,
+      "co2_without_kg": 114.78,
+      "co2_saved_kg": 11.849,
+      "cum_saved_kg": 67.526
+    },
+    {
+      "date": "2026-02-08",
+      "co2_with_kg": 68.517,
+      "co2_without_kg": 78.142,
+      "co2_saved_kg": 9.625,
+      "cum_saved_kg": 77.151
+    },
+    {
+      "date": "2026-02-09",
+      "co2_with_kg": 44.408,
+      "co2_without_kg": 54.227,
+      "co2_saved_kg": 9.819,
+      "cum_saved_kg": 86.971
+    },
+    {
+      "date": "2026-02-10",
+      "co2_with_kg": 69.028,
+      "co2_without_kg": 79.986,
+      "co2_saved_kg": 10.958,
+      "cum_saved_kg": 97.928
+    },
+    {
+      "date": "2026-02-11",
+      "co2_with_kg": 67.308,
+      "co2_without_kg": 76.517,
+      "co2_saved_kg": 9.209,
+      "cum_saved_kg": 107.138
+    },
+    {
+      "date": "2026-02-12",
+      "co2_with_kg": 79.919,
+      "co2_without_kg": 90.007,
+      "co2_saved_kg": 10.088,
+      "cum_saved_kg": 117.226
+    },
+    {
+      "date": "2026-02-13",
+      "co2_with_kg": 58.95,
+      "co2_without_kg": 69.005,
+      "co2_saved_kg": 10.056,
+      "cum_saved_kg": 127.281
+    },
+    {
+      "date": "2026-02-14",
+      "co2_with_kg": 64.947,
+      "co2_without_kg": 73.338,
+      "co2_saved_kg": 8.391,
+      "cum_saved_kg": 135.672
+    },
+    {
+      "date": "2026-02-15",
+      "co2_with_kg": 45.723,
+      "co2_without_kg": 57.415,
+      "co2_saved_kg": 11.692,
+      "cum_saved_kg": 147.364
+    },
+    {
+      "date": "2026-02-16",
+      "co2_with_kg": 80.187,
+      "co2_without_kg": 88.574,
+      "co2_saved_kg": 8.387,
+      "cum_saved_kg": 155.751
+    },
+    {
+      "date": "2026-02-17",
+      "co2_with_kg": 71.207,
+      "co2_without_kg": 76.604,
+      "co2_saved_kg": 5.397,
+      "cum_saved_kg": 161.148
+    },
+    {
+      "date": "2026-02-18",
+      "co2_with_kg": 56.596,
+      "co2_without_kg": 67.017,
+      "co2_saved_kg": 10.42,
+      "cum_saved_kg": 171.568
+    },
+    {
+      "date": "2026-02-19",
+      "co2_with_kg": 89.107,
+      "co2_without_kg": 93.566,
+      "co2_saved_kg": 4.459,
+      "cum_saved_kg": 176.026
+    },
+    {
+      "date": "2026-02-20",
+      "co2_with_kg": 66.858,
+      "co2_without_kg": 77.272,
+      "co2_saved_kg": 10.414,
+      "cum_saved_kg": 186.441
+    },
+    {
+      "date": "2026-02-21",
+      "co2_with_kg": 34.184,
+      "co2_without_kg": 38.733,
+      "co2_saved_kg": 4.549,
+      "cum_saved_kg": 190.99
+    },
+    {
+      "date": "2026-02-22",
+      "co2_with_kg": 78.81,
+      "co2_without_kg": 83.816,
+      "co2_saved_kg": 5.006,
+      "cum_saved_kg": 195.996
+    },
+    {
+      "date": "2026-02-23",
+      "co2_with_kg": 82.622,
+      "co2_without_kg": 90.875,
+      "co2_saved_kg": 8.253,
+      "cum_saved_kg": 204.249
+    },
+    {
+      "date": "2026-02-24",
+      "co2_with_kg": 55.921,
+      "co2_without_kg": 64.462,
+      "co2_saved_kg": 8.541,
+      "cum_saved_kg": 212.79
+    },
+    {
+      "date": "2026-02-25",
+      "co2_with_kg": 70.681,
+      "co2_without_kg": 77.969,
+      "co2_saved_kg": 7.287,
+      "cum_saved_kg": 220.078
+    },
+    {
+      "date": "2026-02-26",
+      "co2_with_kg": 88.813,
+      "co2_without_kg": 97.886,
+      "co2_saved_kg": 9.073,
+      "cum_saved_kg": 229.15
+    },
+    {
+      "date": "2026-02-27",
+      "co2_with_kg": 48.461,
+      "co2_without_kg": 58.353,
+      "co2_saved_kg": 9.892,
+      "cum_saved_kg": 239.043
+    },
+    {
+      "date": "2026-02-28",
+      "co2_with_kg": 28.28,
+      "co2_without_kg": 34.552,
+      "co2_saved_kg": 6.272,
+      "cum_saved_kg": 245.315
+    },
+    {
+      "date": "2026-03-01",
+      "co2_with_kg": 28.48,
+      "co2_without_kg": 42.186,
+      "co2_saved_kg": 13.705,
+      "cum_saved_kg": 259.02
+    },
+    {
+      "date": "2026-03-02",
+      "co2_with_kg": 80.988,
+      "co2_without_kg": 86.423,
+      "co2_saved_kg": 5.435,
+      "cum_saved_kg": 264.455
+    },
+    {
+      "date": "2026-03-03",
+      "co2_with_kg": 61.877,
+      "co2_without_kg": 69.488,
+      "co2_saved_kg": 7.611,
+      "cum_saved_kg": 272.066
+    },
+    {
+      "date": "2026-03-04",
+      "co2_with_kg": 46.069,
+      "co2_without_kg": 52.515,
+      "co2_saved_kg": 6.446,
+      "cum_saved_kg": 278.513
+    },
+    {
+      "date": "2026-03-05",
+      "co2_with_kg": 84.38,
+      "co2_without_kg": 92.634,
+      "co2_saved_kg": 8.253,
+      "cum_saved_kg": 286.766
+    },
+    {
+      "date": "2026-03-06",
+      "co2_with_kg": 56.295,
+      "co2_without_kg": 60.612,
+      "co2_saved_kg": 4.317,
+      "cum_saved_kg": 291.083
+    },
+    {
+      "date": "2026-03-07",
+      "co2_with_kg": 25.042,
+      "co2_without_kg": 30.459,
+      "co2_saved_kg": 5.417,
+      "cum_saved_kg": 296.5
+    },
+    {
+      "date": "2026-03-08",
+      "co2_with_kg": 33.437,
+      "co2_without_kg": 39.005,
+      "co2_saved_kg": 5.567,
+      "cum_saved_kg": 302.068
+    },
+    {
+      "date": "2026-03-09",
+      "co2_with_kg": 64.902,
+      "co2_without_kg": 75.393,
+      "co2_saved_kg": 10.492,
+      "cum_saved_kg": 312.559
+    },
+    {
+      "date": "2026-03-10",
+      "co2_with_kg": 12.78,
+      "co2_without_kg": 23.382,
+      "co2_saved_kg": 10.602,
+      "cum_saved_kg": 323.161
+    },
+    {
+      "date": "2026-03-11",
+      "co2_with_kg": 17.635,
+      "co2_without_kg": 26.842,
+      "co2_saved_kg": 9.207,
+      "cum_saved_kg": 332.368
+    },
+    {
+      "date": "2026-03-12",
+      "co2_with_kg": 81.054,
+      "co2_without_kg": 86.769,
+      "co2_saved_kg": 5.714,
+      "cum_saved_kg": 338.082
+    },
+    {
+      "date": "2026-03-13",
+      "co2_with_kg": 65.005,
+      "co2_without_kg": 73.85,
+      "co2_saved_kg": 8.846,
+      "cum_saved_kg": 346.928
+    },
+    {
+      "date": "2026-03-14",
+      "co2_with_kg": 48.216,
+      "co2_without_kg": 57.337,
+      "co2_saved_kg": 9.121,
+      "cum_saved_kg": 356.049
+    },
+    {
+      "date": "2026-03-15",
+      "co2_with_kg": 78.802,
+      "co2_without_kg": 87.952,
+      "co2_saved_kg": 9.15,
+      "cum_saved_kg": 365.2
+    },
+    {
+      "date": "2026-03-16",
+      "co2_with_kg": 55.567,
+      "co2_without_kg": 60.406,
+      "co2_saved_kg": 4.84,
+      "cum_saved_kg": 370.039
+    },
+    {
+      "date": "2026-03-17",
+      "co2_with_kg": 38.58,
+      "co2_without_kg": 49.003,
+      "co2_saved_kg": 10.422,
+      "cum_saved_kg": 380.462
+    },
+    {
+      "date": "2026-03-18",
+      "co2_with_kg": 54.111,
+      "co2_without_kg": 62.742,
+      "co2_saved_kg": 8.63,
+      "cum_saved_kg": 389.092
+    },
+    {
+      "date": "2026-03-19",
+      "co2_with_kg": 31.906,
+      "co2_without_kg": 36.1,
+      "co2_saved_kg": 4.194,
+      "cum_saved_kg": 393.286
+    },
+    {
+      "date": "2026-03-20",
+      "co2_with_kg": 37.324,
+      "co2_without_kg": 43.653,
+      "co2_saved_kg": 6.329,
+      "cum_saved_kg": 399.615
+    },
+    {
+      "date": "2026-03-21",
+      "co2_with_kg": 12.321,
+      "co2_without_kg": 20.605,
+      "co2_saved_kg": 8.284,
+      "cum_saved_kg": 407.899
+    },
+    {
+      "date": "2026-03-22",
+      "co2_with_kg": 22.55,
+      "co2_without_kg": 26.798,
+      "co2_saved_kg": 4.249,
+      "cum_saved_kg": 412.148
+    },
+    {
+      "date": "2026-03-23",
+      "co2_with_kg": 70.961,
+      "co2_without_kg": 78.892,
+      "co2_saved_kg": 7.931,
+      "cum_saved_kg": 420.079
+    },
+    {
+      "date": "2026-03-24",
+      "co2_with_kg": 12.268,
+      "co2_without_kg": 24.809,
+      "co2_saved_kg": 12.541,
+      "cum_saved_kg": 432.62
+    },
+    {
+      "date": "2026-03-25",
+      "co2_with_kg": 42.948,
+      "co2_without_kg": 48.769,
+      "co2_saved_kg": 5.82,
+      "cum_saved_kg": 438.441
+    },
+    {
+      "date": "2026-03-26",
+      "co2_with_kg": 20.816,
+      "co2_without_kg": 28.651,
+      "co2_saved_kg": 7.835,
+      "cum_saved_kg": 446.276
+    },
+    {
+      "date": "2026-03-27",
+      "co2_with_kg": 43.72,
+      "co2_without_kg": 50.354,
+      "co2_saved_kg": 6.634,
+      "cum_saved_kg": 452.91
+    },
+    {
+      "date": "2026-03-28",
+      "co2_with_kg": 20.822,
+      "co2_without_kg": 27.207,
+      "co2_saved_kg": 6.386,
+      "cum_saved_kg": 459.296
+    },
+    {
+      "date": "2026-03-29",
+      "co2_with_kg": 47.564,
+      "co2_without_kg": 53.606,
+      "co2_saved_kg": 6.042,
+      "cum_saved_kg": 465.338
+    },
+    {
+      "date": "2026-03-30",
+      "co2_with_kg": -6.015,
+      "co2_without_kg": 4.302,
+      "co2_saved_kg": 10.317,
+      "cum_saved_kg": 475.655
+    },
+    {
+      "date": "2026-03-31",
+      "co2_with_kg": -6.793,
+      "co2_without_kg": 1.964,
+      "co2_saved_kg": 8.757,
+      "cum_saved_kg": 484.413
+    },
+    {
+      "date": "2026-04-01",
+      "co2_with_kg": 18.073,
+      "co2_without_kg": 24.82,
+      "co2_saved_kg": 6.747,
+      "cum_saved_kg": 491.16
+    },
+    {
+      "date": "2026-04-02",
+      "co2_with_kg": 39.266,
+      "co2_without_kg": 45.821,
+      "co2_saved_kg": 6.555,
+      "cum_saved_kg": 497.715
+    },
+    {
+      "date": "2026-04-03",
+      "co2_with_kg": -6.288,
+      "co2_without_kg": -1.645,
+      "co2_saved_kg": 4.644,
+      "cum_saved_kg": 502.358
+    },
+    {
+      "date": "2026-04-04",
+      "co2_with_kg": 4.461,
+      "co2_without_kg": 10.407,
+      "co2_saved_kg": 5.946,
+      "cum_saved_kg": 508.304
+    },
+    {
+      "date": "2026-04-05",
+      "co2_with_kg": -11.287,
+      "co2_without_kg": -4.019,
+      "co2_saved_kg": 7.268,
+      "cum_saved_kg": 515.572
+    },
+    {
+      "date": "2026-04-06",
+      "co2_with_kg": -7.878,
+      "co2_without_kg": -3.596,
+      "co2_saved_kg": 4.281,
+      "cum_saved_kg": 519.853
+    },
+    {
+      "date": "2026-04-07",
+      "co2_with_kg": -12.904,
+      "co2_without_kg": -7.16,
+      "co2_saved_kg": 5.744,
+      "cum_saved_kg": 525.598
+    },
+    {
+      "date": "2026-04-08",
+      "co2_with_kg": -6.068,
+      "co2_without_kg": -0.755,
+      "co2_saved_kg": 5.313,
+      "cum_saved_kg": 530.911
+    },
+    {
+      "date": "2026-04-09",
+      "co2_with_kg": 2.972,
+      "co2_without_kg": 13.191,
+      "co2_saved_kg": 10.219,
+      "cum_saved_kg": 541.13
+    },
+    {
+      "date": "2026-04-10",
+      "co2_with_kg": 11.216,
+      "co2_without_kg": 22.232,
+      "co2_saved_kg": 11.016,
+      "cum_saved_kg": 552.146
+    },
+    {
+      "date": "2026-04-11",
+      "co2_with_kg": 13.35,
+      "co2_without_kg": 20.026,
+      "co2_saved_kg": 6.676,
+      "cum_saved_kg": 558.822
+    },
+    {
+      "date": "2026-04-12",
+      "co2_with_kg": -24.401,
+      "co2_without_kg": -16.589,
+      "co2_saved_kg": 7.812,
+      "cum_saved_kg": 566.634
+    },
+    {
+      "date": "2026-04-13",
+      "co2_with_kg": -7.51,
+      "co2_without_kg": -1.164,
+      "co2_saved_kg": 6.346,
+      "cum_saved_kg": 572.98
+    },
+    {
+      "date": "2026-04-14",
+      "co2_with_kg": 6.437,
+      "co2_without_kg": 10.32,
+      "co2_saved_kg": 3.883,
+      "cum_saved_kg": 576.864
+    },
+    {
+      "date": "2026-04-15",
+      "co2_with_kg": 24.376,
+      "co2_without_kg": 34.986,
+      "co2_saved_kg": 10.61,
+      "cum_saved_kg": 587.473
+    },
+    {
+      "date": "2026-04-16",
+      "co2_with_kg": 35.415,
+      "co2_without_kg": 42.423,
+      "co2_saved_kg": 7.008,
+      "cum_saved_kg": 594.481
+    },
+    {
+      "date": "2026-04-17",
+      "co2_with_kg": -30.585,
+      "co2_without_kg": -22.003,
+      "co2_saved_kg": 8.582,
+      "cum_saved_kg": 603.063
+    },
+    {
+      "date": "2026-04-18",
+      "co2_with_kg": 24.86,
+      "co2_without_kg": 30.067,
+      "co2_saved_kg": 5.207,
+      "cum_saved_kg": 608.27
+    },
+    {
+      "date": "2026-04-19",
+      "co2_with_kg": -11.609,
+      "co2_without_kg": -3.515,
+      "co2_saved_kg": 8.094,
+      "cum_saved_kg": 616.364
+    },
+    {
+      "date": "2026-04-20",
+      "co2_with_kg": 16.358,
+      "co2_without_kg": 24.606,
+      "co2_saved_kg": 8.248,
+      "cum_saved_kg": 624.612
+    },
+    {
+      "date": "2026-04-21",
+      "co2_with_kg": -0.523,
+      "co2_without_kg": 3.621,
+      "co2_saved_kg": 4.144,
+      "cum_saved_kg": 628.756
+    },
+    {
+      "date": "2026-04-22",
+      "co2_with_kg": -27.955,
+      "co2_without_kg": -22.453,
+      "co2_saved_kg": 5.502,
+      "cum_saved_kg": 634.258
+    },
+    {
+      "date": "2026-04-23",
+      "co2_with_kg": -24.622,
+      "co2_without_kg": -17.784,
+      "co2_saved_kg": 6.838,
+      "cum_saved_kg": 641.095
+    },
+    {
+      "date": "2026-04-24",
+      "co2_with_kg": -25.181,
+      "co2_without_kg": -18.562,
+      "co2_saved_kg": 6.619,
+      "cum_saved_kg": 647.714
+    },
+    {
+      "date": "2026-04-25",
+      "co2_with_kg": 18.505,
+      "co2_without_kg": 28.364,
+      "co2_saved_kg": 9.86,
+      "cum_saved_kg": 657.574
+    },
+    {
+      "date": "2026-04-26",
+      "co2_with_kg": -21.948,
+      "co2_without_kg": -10.068,
+      "co2_saved_kg": 11.88,
+      "cum_saved_kg": 669.454
+    },
+    {
+      "date": "2026-04-27",
+      "co2_with_kg": -3.99,
+      "co2_without_kg": 1.732,
+      "co2_saved_kg": 5.722,
+      "cum_saved_kg": 675.176
+    },
+    {
+      "date": "2026-04-28",
+      "co2_with_kg": 28.16,
+      "co2_without_kg": 33.239,
+      "co2_saved_kg": 5.079,
+      "cum_saved_kg": 680.255
+    },
+    {
+      "date": "2026-04-29",
+      "co2_with_kg": -19.668,
+      "co2_without_kg": -13.877,
+      "co2_saved_kg": 5.791,
+      "cum_saved_kg": 686.047
+    },
+    {
+      "date": "2026-04-30",
+      "co2_with_kg": 28.119,
+      "co2_without_kg": 31.992,
+      "co2_saved_kg": 3.874,
+      "cum_saved_kg": 689.921
+    },
+    {
+      "date": "2026-05-01",
+      "co2_with_kg": -61.146,
+      "co2_without_kg": -49.831,
+      "co2_saved_kg": 11.315,
+      "cum_saved_kg": 701.236
+    },
+    {
+      "date": "2026-05-02",
+      "co2_with_kg": -31.385,
+      "co2_without_kg": -25.067,
+      "co2_saved_kg": 6.318,
+      "cum_saved_kg": 707.554
+    },
+    {
+      "date": "2026-05-03",
+      "co2_with_kg": 15.749,
+      "co2_without_kg": 24.324,
+      "co2_saved_kg": 8.575,
+      "cum_saved_kg": 716.129
+    },
+    {
+      "date": "2026-05-04",
+      "co2_with_kg": -31.215,
+      "co2_without_kg": -22.034,
+      "co2_saved_kg": 9.18,
+      "cum_saved_kg": 725.309
+    },
+    {
+      "date": "2026-05-05",
+      "co2_with_kg": 6.378,
+      "co2_without_kg": 12.374,
+      "co2_saved_kg": 5.996,
+      "cum_saved_kg": 731.304
+    },
+    {
+      "date": "2026-05-06",
+      "co2_with_kg": -26.767,
+      "co2_without_kg": -17.51,
+      "co2_saved_kg": 9.257,
+      "cum_saved_kg": 740.562
+    },
+    {
+      "date": "2026-05-07",
+      "co2_with_kg": 6.642,
+      "co2_without_kg": 11.409,
+      "co2_saved_kg": 4.767,
+      "cum_saved_kg": 745.329
+    },
+    {
+      "date": "2026-05-08",
+      "co2_with_kg": 7.87,
+      "co2_without_kg": 15.929,
+      "co2_saved_kg": 8.059,
+      "cum_saved_kg": 753.388
+    },
+    {
+      "date": "2026-05-09",
+      "co2_with_kg": -54.212,
+      "co2_without_kg": -47.694,
+      "co2_saved_kg": 6.518,
+      "cum_saved_kg": 759.906
+    },
+    {
+      "date": "2026-05-10",
+      "co2_with_kg": -25.848,
+      "co2_without_kg": -19.628,
+      "co2_saved_kg": 6.22,
+      "cum_saved_kg": 766.126
+    },
+    {
+      "date": "2026-05-11",
+      "co2_with_kg": -28.612,
+      "co2_without_kg": -23.078,
+      "co2_saved_kg": 5.534,
+      "cum_saved_kg": 771.661
+    },
+    {
+      "date": "2026-05-12",
+      "co2_with_kg": -53.311,
+      "co2_without_kg": -44.407,
+      "co2_saved_kg": 8.904,
+      "cum_saved_kg": 780.565
+    },
+    {
+      "date": "2026-05-13",
+      "co2_with_kg": -21.309,
+      "co2_without_kg": -16.4,
+      "co2_saved_kg": 4.909,
+      "cum_saved_kg": 785.474
+    },
+    {
+      "date": "2026-05-14",
+      "co2_with_kg": -25.691,
+      "co2_without_kg": -20.278,
+      "co2_saved_kg": 5.413,
+      "cum_saved_kg": 790.887
+    },
+    {
+      "date": "2026-05-15",
+      "co2_with_kg": -49.144,
+      "co2_without_kg": -44.385,
+      "co2_saved_kg": 4.759,
+      "cum_saved_kg": 795.646
+    },
+    {
+      "date": "2026-05-16",
+      "co2_with_kg": -46.275,
+      "co2_without_kg": -36.418,
+      "co2_saved_kg": 9.857,
+      "cum_saved_kg": 805.503
+    },
+    {
+      "date": "2026-05-17",
+      "co2_with_kg": -34.103,
+      "co2_without_kg": -24.199,
+      "co2_saved_kg": 9.905,
+      "cum_saved_kg": 815.408
+    },
+    {
+      "date": "2026-05-18",
+      "co2_with_kg": -2.999,
+      "co2_without_kg": 4.478,
+      "co2_saved_kg": 7.477,
+      "cum_saved_kg": 822.885
+    },
+    {
+      "date": "2026-05-19",
+      "co2_with_kg": 0.976,
+      "co2_without_kg": 10.246,
+      "co2_saved_kg": 9.27,
+      "cum_saved_kg": 832.154
+    },
+    {
+      "date": "2026-05-20",
+      "co2_with_kg": -9.318,
+      "co2_without_kg": -4.009,
+      "co2_saved_kg": 5.309,
+      "cum_saved_kg": 837.463
+    },
+    {
+      "date": "2026-05-21",
+      "co2_with_kg": -8.573,
+      "co2_without_kg": -2.262,
+      "co2_saved_kg": 6.311,
+      "cum_saved_kg": 843.774
+    },
+    {
+      "date": "2026-05-22",
+      "co2_with_kg": -12.347,
+      "co2_without_kg": -3.262,
+      "co2_saved_kg": 9.085,
+      "cum_saved_kg": 852.859
+    },
+    {
+      "date": "2026-05-23",
+      "co2_with_kg": -26.722,
+      "co2_without_kg": -19.645,
+      "co2_saved_kg": 7.077,
+      "cum_saved_kg": 859.937
+    },
+    {
+      "date": "2026-05-24",
+      "co2_with_kg": -2.471,
+      "co2_without_kg": 2.277,
+      "co2_saved_kg": 4.748,
+      "cum_saved_kg": 864.685
+    },
+    {
+      "date": "2026-05-25",
+      "co2_with_kg": -29.474,
+      "co2_without_kg": -22.064,
+      "co2_saved_kg": 7.409,
+      "cum_saved_kg": 872.094
+    },
+    {
+      "date": "2026-05-26",
+      "co2_with_kg": -43.011,
+      "co2_without_kg": -39.353,
+      "co2_saved_kg": 3.658,
+      "cum_saved_kg": 875.752
+    },
+    {
+      "date": "2026-05-27",
+      "co2_with_kg": -7.197,
+      "co2_without_kg": -2.511,
+      "co2_saved_kg": 4.685,
+      "cum_saved_kg": 880.438
+    },
+    {
+      "date": "2026-05-28",
+      "co2_with_kg": -35.007,
+      "co2_without_kg": -25.954,
+      "co2_saved_kg": 9.053,
+      "cum_saved_kg": 889.491
+    },
+    {
+      "date": "2026-05-29",
+      "co2_with_kg": -75.917,
+      "co2_without_kg": -70.354,
+      "co2_saved_kg": 5.563,
+      "cum_saved_kg": 895.054
+    },
+    {
+      "date": "2026-05-30",
+      "co2_with_kg": -18.896,
+      "co2_without_kg": -11.364,
+      "co2_saved_kg": 7.532,
+      "cum_saved_kg": 902.585
+    },
+    {
+      "date": "2026-05-31",
+      "co2_with_kg": -12.745,
+      "co2_without_kg": -5.011,
+      "co2_saved_kg": 7.734,
+      "cum_saved_kg": 910.32
+    }
+  ],
+  "totals": {
+    "co2_with_kg": 2586.335,
+    "co2_without_kg": 3496.651,
+    "co2_saved_kg": 910.313,
+    "co2_saved_tonnes": 0.9103,
+    "pct_reduction": 26.03,
+    "from": "2026-02-01",
+    "to": "2026-05-31",
+    "n_batteries": 1
+  }
+}
