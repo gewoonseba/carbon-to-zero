@@ -1,0 +1,10 @@
+sector,group,share_pct,co2_mt
+Electricity & Heat,Energy,30.4,11294
+Agriculture & Land Use,Land,18.4,6836
+Road Transport,Transport,11.9,4421
+Manufacturing & Construction,Industry,12.4,4607
+Buildings,Buildings,8.7,3232
+Industrial Processes,Industry,5.6,2080
+Fugitive Emissions,Energy,5.8,2155
+Aviation & Shipping,Transport,3.6,1337
+Waste,Waste,3.2,1189
